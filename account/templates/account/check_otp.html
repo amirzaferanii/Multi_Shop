@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ورود به حساب کاربری - Fantasy Login</title>
+    <link rel="stylesheet" href="{% static 'css/styles_login.css' %}">
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo">LADY MODE</div>
+        <h3>کد تایید را وارد کنید</h3>
+        <p><br>کد تایید برای شماره شما ارسال شد</p>
+        {% for error in form.phone.errors %}
+         <div class="alert alert-danger">{{ error }}</div>
+        {% endfor %}
+        <form action="" method="post">
+    {% csrf_token %}
+
+             {{ form.code }}
+
+            <button type="submit">تایید کد</button>
+        </form>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,163 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    {% load widget_tweaks %}
+    <section class="inner-page" id="profile-page">
+        <div class="container-fluid" id="page-hero">
+            <div class="row">
+                <div class="col-12">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12 px-0">
+                                <h1>ناحیه کاربری</h1>
+                                <p>به ناحیه کاربری روبیک مارکت خوش آمدید.</p>
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="../index.html">صفحه نخست</a></li>
+                                        <li class="breadcrumb-item"><a href="#">ناحیه کاربری</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">آدرس های من</li>
+                                    </ol>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="content">
+                        <div class="row">
+                            <div class="col-12 col-lg-3">
+                               <!-- Side Panel -->
+                           {% include 'account/profile/side_panel.html' %}
+                            <!-- /Side Panel -->
+                            </div>
+                            <div class="col-12 col-lg-9 pl-lg-0 pr-lg-2 mt-2 mt-lg-0">
+                                <!-- New Address Form -->
+                                <div class="custom-container mb-2" id="new-address">
+                                    <div class="row pt-2 px-3">
+                                        <div class="col-12"><h1>افزودن آدرس جدید</h1></div>
+                                    </div>
+                                    <hr>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-12 pt-3">
+                                                <form action="" method="post">
+                                                    {% csrf_token %}
+                                                    <div class="row">
+                                                        <div class="col-12 col-md-4 pl-2">
+                                                            <div class="form-group m-1">
+                                                                <label for="province">استان:</label>
+                                                                <select name="city" id="city" class="form-control">
+                                                                    {% for city in city %}
+                                                                        <option name="city"
+                                                                                value="{{ city.id }}">{{ city.name }}</option>
+                                                                    {% endfor %}
+                                                                </select>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-12 col-md-8 pl-2">
+                                                            <div class="form-group m-1">
+                                                                <label for="address">نشانی کامل:</label>
+                                                                {{ form.address|attr:"class:form-control"|attr:"name:address"|attr:"id:address"|attr:"type:text" }}
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12 col-md-4 pl-2">
+                                                            <div class="form-group m-1">
+                                                                <label for="postal_code">کد پستی:</label>
+                                                                {{ form.postal_code|attr:"type:text"|attr:"class:form-control"|attr:"name:postal_code"|attr:"id:postal_code" }}
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12 col-md-4 pl-2">
+                                                            <div class="form-group m-1">
+                                                                <label for="receiver">تحویل گیرنده:</label>
+                                                                {{ form.fullname|attr:"class:form-control"|attr:"type:text"|attr:"id:receiver"|attr:"name:receiver" }}
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12 col-md-4 pl-2">
+                                                            <div class="form-group m-1">
+                                                                <label for="tel">تلفن تماس:</label>
+                                                                {{ form.phone|attr:"class:form-control"|attr:"name:phone"|attr:"type:text"|attr:"id:phone" }}
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="form-group m-1 pb-3">
+                                                                <input type="submit" class="btn btn-primary px-5"
+                                                                       value="ذخیره آدرس">
+                                                            </div>
+                                                            {{ form.errors }}
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /New Address Form -->
+
+                                <!-- User Addresses -->
+                                <div class="custom-container" id="addresses">
+                                    <div class="row pt-2 px-3">
+                                        <div class="col-12"><h1>آدرس های من</h1></div>
+                                    </div>
+                                    <hr>
+                                    {% for address in user_address %}
+                                        <div class="container">
+                                        <div class="row">
+                                        <!-- Address Record -->
+
+                                        <div class="col-12 address py-2">
+                                            <div class="row">
+                                                <div class="col-12 col-sm-10">
+                                                    <div class="title">{{ address.city }}</div>
+                                                    <div class="sub-title">{{ address.address }}</div>
+                                                    <div class="sub-title">{{ address.postal_code }}</div>
+                                                    <div class="sub-title">{{ address.fullname }}</div>
+                                                    <div class="sub-title">{{ address.phone }}</div>
+
+                                                </div>
+
+                                                <div class="col-12 col-sm-2 text-lg-end">
+                                                    <form action="{% url 'account:address_delete' address.id %}"
+                                                          method="post" style="display: inline;"
+                                                          onsubmit="return confirm('آیا جهت حذف این آدرس اطمینان دارید؟')">
+                                                        {% csrf_token %}
+                                                        <button type="submit"
+                                                                style="background: none; border: none; padding: 0; margin: 0;">
+                                                            <i class="fa fa-trash-alt font-weight-normal"
+                                                               style="color: #fcb941;"></i>
+                                                        </button>
+                                                    </form>
+                                                    <a href="#" class="float-right float-sm-left"><i
+                                                            class="fa fa-edit font-weight-normal"></i></a>
+                                                    <a href="#" class="float-right float-sm-left ml-2"
+                                                       title="آدرس پیش فرض"><i class="fa fa-check-circle"
+                                                                               style="color: #fcb941"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                    <!-- Address Record -->
+                                    <!-- Address Record -->
+
+
+                                    </div>
+                                    </div>
+                                    <!-- Address Record -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /User Addresses -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+    </section>
+{% endblock %}

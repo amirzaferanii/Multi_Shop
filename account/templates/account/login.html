@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ورود به حساب کاربری - Fantasy Login</title>
+    <link rel="stylesheet" href="{% static 'css/styles_login.css' %}">
+</head>
+<body>
+
+    <div class="login-container">
+        <div class="logo">LADY MODE</div>
+        <h3>ورود با رمز عبور</h3>
+        <div>  <p>سلام!<br>لطفا  شماره  موبایل  یا  ایمیل  خود  را  وارد  کنید</p></div>
+
+        <form action="" method="post">
+    {% csrf_token %}
+         {{ form.username }}
+         {{ form.password }}
+            {% for error in form.errors %}
+                <div class="alert alert-danger"> {{ form.username.errors }}</div>
+            {% endfor %}
+
+
+            <button type="submit">ورود</button>
+         <p1>
+    با عضویت در سایت ما، شما
+    <a href="#" style="color: blue; text-decoration: underline;">شرایط و قوانین</a>
+    را میپذیرید.
+</p1>
+
+
+
+</body>
+</html>

@@ -1,0 +1,112 @@
+@font-face{
+    font-family: 'Peyda-Medium[@fontbazi]' ;
+    src: url('../fonts/Peyda-Medium[@fontbazi].ttf') format('truetype');
+    }
+    
+
+
+body {
+    font-family: Tahoma, Arial, sans-serif;
+    background-color: #fff; /* پس‌زمینه کل صفحه سفید */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.login-container {
+    background-color: #fff; /* پس‌زمینه باکس ورودی سفید */
+    padding: 35px; /* پدینگ داخلی باکس */
+    border-radius: 20px;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
+    width: 95%; /* عرض باکس به صورت درصدی از صفحه */
+    max-width: 350px; /* حداکثر عرض باکس */
+    text-align: center;
+    border: 1px solid #ccc; /* خط نازک مشخص کننده باکس با رنگ سازمانی */
+}
+.login-container h2 {
+    margin-bottom: 100px;
+    color: #333;
+}
+
+.login-container h4 {
+    color: #d90000; /* رنگ قرمز */
+    text-align: right;
+    font-family: 'Peyda-Medium[@fontbazi]', Tahoma, Arial, sans-serif; /* فونت مورد نظر */
+}
+
+.login-container .alert {
+    color: #d90000; /* رنگ قرمز */
+    font-family: 'Peyda-Medium[@fontbazi]', Tahoma, Arial, sans-serif; /* فونت مورد نظر */
+    /* دیگر ویژگی‌های مورد نیاز برای استایل ارورها می‌تواند اینجا تعریف شود */
+}
+.login-container input {
+    width: 100%;
+    padding: 20px; /* کاهش پدینگ داخلی */
+    margin-bottom: 35px;
+    border: 1px solid #ccc; /* خط نازک طوسی دور ورودی */
+    font-size: 16px;
+    box-sizing: border-box;
+    border-radius: 6px; /* افزودن گوشه های گرد به ورودی */
+}
+.login-container button {
+    width: 100%;
+    background-color: #fcb941; /* رنگ دکمه ورود با رنگ سازمانی */
+    color: #fff;
+    padding: 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 18px;
+    font-family: 'Peyda-Medium[@fontbazi]', Tahoma, Arial, sans-serif;
+}
+.login-container button:hover {
+    background-color: #e3a22b; /* رنگ هاور دکمه ورود */
+}
+.login-container h3 {
+    color: #000;
+    text-align: right;
+    font-family: 'Peyda-Medium[@fontbazi]', Tahoma, Arial, sans-serif;
+}
+
+.login-container p {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    font-size: 14px;
+    text-align: right; /* تنظیم متن به صورت راستچین */
+    color: #676767;
+    font-family: 'Peyda-Medium[@fontbazi]', Tahoma, Arial, sans-serif;
+}
+
+.login-container p1 {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    font-size: 14px;
+    text-align: right; /* تنظیم متن به صورت راستچین */
+    color: #4f5050;
+    font-family: 'Peyda-Medium[@fontbazi]', Tahoma, Arial, sans-serif;
+}
+.login-container a:hover {
+    text-decoration: underline;
+}
+.logo {
+    margin-bottom: 50px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #fcb941; /* رنگ لوگو با رنگ سازمانی */
+    font-family: 'Peyda-Medium[@fontbazi]', Tahoma, Arial, sans-serif;
+}
+
+/* Responsive Styles */
+@media (max-width: 1080px) {
+    .login-container {
+        width: 95%; /* عرض باکس در صفحات کوچکتر از 1026px */
+    }
+}
+@media (max-width: 700px) {
+    .login-container {
+        width: 95%; /* عرض باکس در صفحات کوچکتر از 608px */
+        max-width: none; /* حذف حداکثر عرض */
+    }
+}
